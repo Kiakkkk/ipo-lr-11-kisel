@@ -9,7 +9,10 @@ class Vehicle:
         self.clients_list = list()#список клиентов чьи грузы загружены
 
     def load_cargo(self, client:Client.Client):#функция загружающая груз на транспортное средство
-        self.current_load += client.cargo_weight 
+        if(type(client)==Client.Client):
+            self.current_load += client.cargo_weight 
+        else:
+            print("Произошла ошибка") 
 
     def __str__(self):#магический метод
         data = "ID: " + self.vehicle_id + "\nГрузоподъемность: " + str(self.capacity) + "\nТекущая загрузка: " + str(self.current_load)
