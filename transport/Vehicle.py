@@ -9,9 +9,9 @@ class Vehicle:
         self.clients_list = list()#список клиентов чьи грузы загружены
 
     def load_cargo(self, client:Client.Client):#функция загружающая груз на транспортное средство
-        if(type(client)==Client.Client):
+        try:
             self.current_load += client.cargo_weight 
-        else:
+        except:
             print("Произошла ошибка") 
 
     def __str__(self):#магический метод
