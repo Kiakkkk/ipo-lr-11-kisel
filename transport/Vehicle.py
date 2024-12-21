@@ -7,7 +7,6 @@ class Vehicle:
         self.capacity = capacity#грузоподъёмность
         self.current_load = 0#загруженность
         self.clients_list = list()#список клиентов чьи грузы загружены
-        self.add_to_transport_list()
 
     def load_cargo(self, client:Client.Client):#функция загружающая груз на транспортное средство
         self.current_load += client.cargo_weight 
