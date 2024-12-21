@@ -1,3 +1,4 @@
+from transport import func
 import json
 from transport import Client
 from transport import Vehicle
@@ -18,31 +19,27 @@ def add_client(): #функция для вывода всех записей
         vip = False
     else:
         print("Некорректное значение. Использовано значение по умолчанию")
+    info={'name':name, 'cargo_weight':cargo_weight, 'is_vip':vip}
+    func.add_to_client_list(info)
     return Client.Client(name, cargo_weight, vip)
 
 def add_transport(): #функция для вывода всех записей
     try:
-        t = int(input("Введите вид транспорта\n 1-авто 2-поезд 3-самолёт\n"))
+        t = int(input("Введите вид транспорта\n1-поезд 2-самолёт\n"))
         if(t==1):  
-            try:
-                capacity = int(input("Введите грузоподъёмность: "))
-            except:
-                print("Некорректное значение")
-            transp = Vehicle.Vehicle(capacity)
-        elif(t==2):  
             try:
                 capacity = int(input("Введите грузоподъёмность: "))
                 number_of_cars = int(input("Введите количество вагонов:"))
             except:
                 print("Некорректное значение")
-            transp = Train.Train(capacity, number_of_cars)
-        elif(t==3):  
+            func.add_to_transport_list(Train.Train.add_to_transport_list(Train.Train(capacity, number_of_cars)))
+        elif(t==2):  
             try:
                 capacity = int(input("Введите грузоподъёмность: "))
                 number_of_cars = int(input("Введите максимальную высоту подъёма:"))
             except:
                 print("Некорректное значение")
-            transp = Airplane.Airplane(capacity, number_of_cars)
+            func.add_to_transport_list(Airplane.Airplane.add_to_transport_list(Airplane.Airplane(capacity, number_of_cars)))
         else:
             print("Некорректное значение")
     except:

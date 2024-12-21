@@ -1,5 +1,4 @@
 from transport import Vehicle
-from transport import func
 
 class Train(Vehicle.Vehicle):
     def __init__(self, capacity:int, number_of_cars:int):
@@ -14,7 +13,7 @@ class Train(Vehicle.Vehicle):
             'client_list': self.clients_list,
             'number_of_cars': self.number_of_cars  # добавляем number_of_cars в info
         }
-        func.add_to_transport_list(info)
+        return info
 
         
     def __str__(self):

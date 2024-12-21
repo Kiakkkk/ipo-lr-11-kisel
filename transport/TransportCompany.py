@@ -1,4 +1,3 @@
-import json
 from transport import Client, Vehicle 
 
 class TransportCompany:
